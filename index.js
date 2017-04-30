@@ -1,11 +1,29 @@
-var hapi = require('hapi'), joi = require('joi');
+var hapi = require('hapi'), 
+	joi = require('joi'), 
+	path = require('path'),
+	nunjucksHapi = require('nunjucks-hapi');
+
 
 var server = new hapi.Server();	
 
+// nunjucks.configure(path.join(__dirname, './lib/view'));
 server.connection({port:3000});
 
 const routes = require('./lib/routes');
 server.route(routes);
+
+server.register(require('vision'),(err) =>{
+	 if (err) {
+        throw err;
+    }
+ 
+    server.views({
+        engines: {
+            html: nunjucksHapi
+        },
+        path: path.join(__dirname, './lib/view')
+    });
+});
 
 // server.route({
 // 	method: 'GET',
