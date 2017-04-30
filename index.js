@@ -9,10 +9,9 @@ var server = new hapi.Server();
 // nunjucks.configure(path.join(__dirname, './lib/view'));
 server.connection({port:3000});
 
-const routes = require('./lib/routes');
-server.route(routes);
 
-server.register(require('vision'),(err) =>{
+
+server.register([require('vision'),require('inert')],(err) =>{
 	 if (err) {
         throw err;
     }
@@ -21,25 +20,13 @@ server.register(require('vision'),(err) =>{
         engines: {
             html: nunjucksHapi
         },
-        path: path.join(__dirname, './lib/view')
+        path: path.join(__dirname, './app/view')
     });
 });
+//Mahalagang nandito bago lagay ng plugins
 
-// server.route({
-// 	method: 'GET',
-// 	path: '/{name*}',
-// 	config:{
-// 		// validate:{
-// 		// 	params:{
-// 		// 		name: joi.string().min(2).max(40).required()
-// 		// 	}
-// 		// },
-// 		handler:function(req, reply){
-// 			reply("Hello, "+req.params.name);
-// 		}
-// 	}
-// });
-
+const routes = require('./app/routes');
+server.route(routes);
 
 server.start(function(){
 	console.log("Now Visit: http://localhost:"+server.info.port+'/name');

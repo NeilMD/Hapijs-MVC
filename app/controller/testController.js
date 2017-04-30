@@ -3,6 +3,9 @@
 
 module.exports =  {
 	test:(request ,reply) =>{
-		reply.view('test');
+		reply.view('tobeCalled',{
+			'firstName': 'Neil',
+			'lastName':'Capistrano'
+		});
 	}
 };
