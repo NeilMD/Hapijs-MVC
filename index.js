@@ -25,7 +25,7 @@ server.register([require('vision'),require('inert')],(err) =>{
         path: path.join(__dirname, './app/view')
     });
 });
-//Mahalagang nandito bago lagay ng plugins
+
 
 const routes = require('./app/routes');
 server.route(routes);
