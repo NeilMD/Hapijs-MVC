@@ -1,7 +1,9 @@
 var hapi = require('hapi'), 
 	joi = require('joi'), 
 	path = require('path'),
-	nunjucksHapi = require('nunjucks-hapi');
+	nunjucksHapi = require('nunjucks-hapi'),
+    config = require('./config'),
+    db = require('./database');
 
 
 var server = new hapi.Server();	
