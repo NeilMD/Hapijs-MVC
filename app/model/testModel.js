@@ -12,39 +12,32 @@ var UserSchema = new Schema({
 
 var user = Mongoose.model('user', UserSchema);
 
-function findUser(user,where){
-
-}
-
 module.exports = {
     user: user,
-
-    find:function(where){    	
-    	/**/
-    	try{
-    		return user.find("asdsad");
-    	}catch(err){
-    		return err;
-    	}
-    	// return 
-		// Promise.all(function(user,where){
-		// return  new Promise(function (resolve, reject) {
-		// 	user.find(where, function(err, user) {
-	 //            if (!err) {
-	 //            	// console.log(user);
-	 //            	resolve(user);
-
-	 //            } else {
-	 //                reject(err)
-	 //            }
-	 //        });
-		// });		
-		// }).then(function(value){
-		// 	// console.log(value);  
-  //       	return value;
-        	
-		// });
-        
-    }
+    // find:function(where){    	    	
+    // 	try{
+    // 		return user.find(where);
+    // 	}catch(err){
+    // 		return err;
+    // 	}        
+    // }
 };
 
+
+/*Promise.all([
+	new Promise(function(resolve, reject){
+		user.find(where,function(err,user){
+			if(err){
+				reject(err)
+				// return;
+			}
+			resolve(user);
+		});
+	})
+]).then(function(user){
+	console.log("Model user:"+user);
+	// return user;
+	return user;
+	
+});
+*/
