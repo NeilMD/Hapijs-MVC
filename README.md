@@ -99,7 +99,8 @@ read nunjuckjs api
 
 # Settings
 
-check config.js and database.js for settings of server and mongodb
+check config.js and database.js for settings of server and mongodb.
+for static files read the last route in app/routes.js that gives access to directory written to be able to pass the file 
 
 
 
