@@ -1,6 +1,6 @@
 # Hapijs-MVC
 
-MVC for desgin Hapijs
+MVC format Hapijs
 
 # Routing
 Use app/routes.js to put routes.
