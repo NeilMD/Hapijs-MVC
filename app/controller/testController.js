@@ -2,11 +2,11 @@
 // const Path = require('path');
 var Joi = require('joi'),
     Boom = require('boom'),
-    user = require('../model/testModel').user;
+    act = require('../model/testModel').act;
 
 module.exports =  {
 	test:(request ,reply) =>{
-		user.find({},function(err,user){
+		act.find({},function(err,user){
 			if(err){
 				console.log( err);
 				// return;
@@ -30,7 +30,41 @@ module.exports =  {
 		
 	},
 	search:(request, reply)=>{
-		reply.view('searchMain');
+		act.find({},function(err, acts){
+			if(err){
+				console.log(err);
+
+			}else{
+				reply.view('searchMain',{
+					'acts':acts
+				});
+			}
+		})
+		
+	},
+	create:(request, reply)=>{
+		try{
+			var acts = new act({
+				title: request.payload.title,
+				category:request.payload.cat,
+				subject:request.payload.subject,
+				question:request.payload.ques,
+				answer:request.payload.ans
+			});
+		}catch(err){
+			console.log(err);
+
+			reply("Failed")
+		}
+
+		acts.save(function(err, act){
+			if(err){
+				console.log(err);
+				reply("Failed!");
+			}else{
+				reply("Success");
+			}
+		});
 	},
 	upload:(request, reply)=>{
 		reply.view('uploadMain');

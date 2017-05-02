@@ -5,11 +5,13 @@
 {%endblock%}
 
 {%block results%}
-	<!-- <tr>
-	    <td><a href="#">Derivsatives</a></td>
-	    <td>Mathematics</td>
-	    <td>Calculus, Word Problems</td>
-	    <td> D. Songsong </td>
-	</tr> -->
+	{%for act in acts%}
+		<tr>
+		    <td><a href="#">{{act.title}}</a></td>
+		    <td>{{act.category}}</td>
+		    <td>{{act.subject}}</td>
+		    <td> D. Songsong </td>
+		</tr>
+	{%endfor%}
 {%endblock%}
 

@@ -13,6 +13,14 @@ module.exports = [
 		}
 	},
 	{
+		method:'POST',
+		path: '/upload',
+		handler: testController.create,
+		config:{
+			description: "upload"
+		}
+	},
+	{
 		method:'GET',
 		path: '/search',
 		handler: testController.search,

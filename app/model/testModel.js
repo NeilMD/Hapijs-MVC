@@ -5,15 +5,20 @@ var Mongoose = require('mongoose'),
     Schema = Mongoose.Schema;
 
 //User
-var UserSchema = new Schema({
-    userId: { type: String, unique: true, required: true },
-    username: { type: String, required: true }
+var actSchema = new Schema({
+    // id: { type: String, unique: true, required: true },
+    title: { type: String, required: true },
+    category: { type: String, required: true },
+    subject: { type: String, required: true },
+    question: { type: String, required: true },
+    answer: { type: String, required: true }
+
 	});
 
-var user = Mongoose.model('user', UserSchema);
+var act = Mongoose.model('activity', actSchema);
 
 module.exports = {
-    user: user,
+    act: act,
     // find:function(where){    	    	
     // 	try{
     // 		return user.find(where);
