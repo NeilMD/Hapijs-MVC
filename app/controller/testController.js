@@ -18,7 +18,7 @@ module.exports =  {
 			});
 
 		}).catch(function(err){
-
+			
 		});
 		// var users = user.user.find({});
 		// console.log(users);
@@ -28,5 +28,11 @@ module.exports =  {
 		// 	'lastName':'Capistrano'
 		// });
 		
+	},
+	search:(request, reply)=>{
+		reply.view('searchMain');
+	},
+	upload:(request, reply)=>{
+		reply.view('uploadMain');
 	}
 };

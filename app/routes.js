@@ -6,8 +6,16 @@ const path = require('path');
 module.exports = [
 	{
 		method:'GET',
-		path: '/',
-		handler: testController.test,
+		path: '/upload',
+		handler: testController.upload,
+		config:{
+			description: "upload"
+		}
+	},
+	{
+		method:'GET',
+		path: '/search',
+		handler: testController.search,
 		config:{
 			description: "Home"
 		}
