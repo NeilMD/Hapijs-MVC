@@ -68,5 +68,20 @@ module.exports =  {
 	},
 	upload:(request, reply)=>{
 		reply.view('uploadMain');
-	}
+	},
+	auth:(request, reply) =>{
+		request.yar.set('isAuth',true);
+		reply("Success!");
+	},
+	checkauth:(request, reply)=>{
+		reply("Pumasok!");
+	},
+	unauth:(request, reply) =>{
+		request.yar.clear('isAuth');
+		reply('Wla na ');
+		
+	},
+
+
+
 };

@@ -8,12 +8,34 @@ var hapi = require('hapi'),
 
 var server = new hapi.Server();	
 
+var options = {
+    storeBlank: false,
+    cookieOptions: {
+        password: 'the-password-must-be-at-least-32-characters-long',
+        isSecure: false
+    }
+};
+
 // nunjucks.configure(path.join(__dirname, './lib/view'));
 server.connection({port:3000});
 
 
 
-server.register([require('vision'),require('inert')],(err) =>{
+server.register([
+        require('vision'),
+        require('inert'),
+        {register: require('yar'), options},
+        // {
+        //     register: require('hapi-server-session'),
+        //     options: {
+        //         cookie: {
+        //           isSecure: false,
+        //         },
+        //     },
+        // }
+  
+
+    ],(err) =>{
 	 if (err) {
         throw err;
     }
