@@ -2,18 +2,9 @@
 
 const testController = require('./controller/testController');
 const path = require('path');
+const authPolicy = require('./policy/authPolicy');
 
-const checkAuth = function(request, reply){
-	var auth = request.yar.get('isAuth');
-	console.log(auth);
-	if(request.yar.get('isAuth')){
-		reply('asd');
-	}
-	else{
-		reply("Unauthorized!").takeover();	
-	}
-	
-}
+
 
 module.exports = [
 	{
@@ -58,7 +49,7 @@ module.exports = [
 		config:{
 			description: "Checks authentication",
 			pre:[
-				{method: checkAuth ,assign:'auth'}
+				{method: authPolicy.checkAuth ,assign:'auth'}
 			],
 			
 		}
