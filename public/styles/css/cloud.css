@@ -1,0 +1,240 @@
+header .navbar-default {
+    background-color: #2DC462;
+}
+
+.navbar-brand span {
+    color: #FFF;
+}
+
+
+.navbar-default .navbar-brand {
+    position: relative;
+    color: #FFF;
+    top: 12px;
+}
+
+
+
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #000;
+    text-shadow: none;
+}
+
+.navbar .nav > li > a {
+    color: #FFF;
+    text-shadow: none;
+}
+
+
+a, a:hover, a:focus, a:active, footer a.text-link:hover, strike, .post-meta span a:hover, footer a.text-link, ul.meta-post li a:hover, ul.cat li a:hover, ul.recent li h6 a:hover, ul.portfolio-categ li.active a, ul.portfolio-categ li.active a:hover, ul.portfolio-categ li a:hover, ul.related-post li h4 a:hover, span.highlight, article .post-heading h3 a:hover, .navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > li > a:hover, .navbar .nav > li > a:focus, .navbar .nav > .active > a:focus {
+    color: #000;
+}
+
+
+#title{
+
+    color: #087830;
+
+}
+
+
+#informationDiv{
+
+    position: relative;
+    bottom: 30px;
+
+}
+
+#questionsDiv{
+
+    position: relative;
+    bottom: 30px;
+}
+
+section.callaction {
+    background: #FFF	;
+    padding: 10px 0 0 0;
+}
+
+
+
+footer {
+	position: relative;
+
+	top: 218.5px;
+    background: #2DC462;
+    padding: 0px 0 0 0;
+}
+
+#sub-footer {
+    background: #2DC462;
+    padding-top: 0px;
+}
+
+#content {
+    position: relative;
+    background: #fff;
+    padding: 0px 0 40px 0;
+}
+
+.solidline {
+    border-top: 2px solid #f5f5f5;
+    margin: 0 0 30px;
+}
+
+h4.heading {
+    font-weight: 700;
+}
+
+#addField {
+    outline: 0;
+    background: #087830;
+    border-color: #FFF;
+    font-size: 18px;
+}
+
+#removeField {
+    outline: 0;
+    background: #a40b0b;
+    border-color: #FFF;
+    font-size: 18px;
+}
+
+
+.sprites{
+
+
+      border-radius: 50%;
+      width: 45px;
+      margin-left: 13px;
+      margin-top: 30px;
+   
+      position: relative;
+
+
+}
+
+.panel-body {
+    padding: 15px;
+    background-color: #FDFDFD;
+}
+
+
+.buttons{
+    bottom: 15px;
+}
+
+.buttons .clear{
+    left: 15px;
+    position: relative;
+}
+
+.lastButtons {
+    outline: 0;
+    border-color: #FFF;
+    font-size: 35px;
+}
+
+.lastButtons2 {
+    outline: 0;
+    border-color: #FFF;
+    font-size: 35px;
+    left: 30px;
+    position: relative;
+}
+
+#search {
+    outline: 0;
+    border-color: #FFF;
+    font-size: 20px;
+}
+
+
+
+#firstDivider{
+
+    position: relative;
+    bottom: 50px;
+}
+
+
+.cta-text {
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+#smartwizard{
+
+
+    position: relative;
+    bottom: 80px;
+}
+
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+#finalButtons{
+
+     text-align: center;
+
+}
+
+#submitButton{
+
+    font-size:  20px;
+}
+
+
+#cancelButton{
+
+    font-size: 20px;
+}
+
+
+#secondDivider{
+
+    position: relative;
+    bottom: 28px;
+}
+
+#searchSection{
+
+    position: relative;
+    bottom: 80px;
+}
+
+
+
+#thirdDivider{
+
+    position: relative;
+    bottom: 100px;
+}
+
+
+#resultsSection{
+
+    position: relative;
+    bottom: 150px;
+}
+
+
+#tableSection{
+
+    position: relative;
+    bottom: 35px;
+}
+
+#advanceButton {
+    outline: 0;
+    border-color: #FFF;
+    font-size: 20px;
+}
+
+
