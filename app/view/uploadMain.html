@@ -4,3 +4,254 @@
 	  {% include "sections/header.html" %} 
 {%endblock%}
 
+{%block container%}
+<div class="container" ng-app="test" ng-controller="myCtr">
+		
+			<div id="smartwizard" class="row">
+				<ul>
+					<li><a href="#step-1"><big>Information</big><br /><medium>Say something about your submission</medium></a></li>
+					<li><a href="#step-2"><big>Question</big><br /><medium>Input your submission</medium></a></li>
+					<li><a href="#step-3"><big>Answer Key</big><br /><medium>Input the answer to your submission</medium></a></li>
+					<li><a href="#step-4"><big>Summary </big><br /><medium>Summary of your contribution</medium></a></li>
+
+				</ul>
+
+				<div>
+					<div id="step-1" class="">
+						<div class="row">
+							<div class="col-lg-8">
+
+
+
+								<div class="row">
+									<div class="col-lg-12">
+										<h3 class="heading">Information</h3>
+
+									</div>
+								</div>
+
+
+
+
+								<div id="informationDiv" class="panel panel-default">
+									<div class="panel-body">
+										<form action="" method="post" role="form" class="contactForm">
+											<h6>Title</h6>
+											<div class="form-group">
+												<input type="text" name="name" class="form-control" id="name" placeholder="Activity Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+												<div class="validation"></div>
+											</div>
+											<h6>Category</h6>
+											<div class="form-group">
+												<input type="email" class="form-control" name="email" id="email" placeholder="e.g." data-rule="email" data-msg="Please enter a valid email" />
+												<div class="validation"></div>
+											</div>
+											<h6>Subject</h6>
+											<div class="form-group">
+												<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+												<div class="validation"></div>
+											</div>
+											<div>
+												<h6> Tags: </h6>
+											</div>
+
+											<div class="col-lg-12">
+
+												<a href="#" class="btn btn-large btn-rounded btn-theme">Computer</a>
+												<a href="#" class="btn btn-large btn-rounded btn-theme">Mathematics</a>
+
+											</div>
+
+
+										</form>
+									</div>
+								</div>
+
+
+
+							</div>
+
+
+
+						</div>
+					</div>
+					<div id="step-2" class="">
+
+
+
+
+						<div class="row">
+							<div class="col-lg-12">
+
+
+
+
+								<div class="row">
+									<div class="col-lg-12">
+										<h3 class="heading">Question</h3>
+
+									</div>
+								</div>
+
+
+
+
+								<div id="questionsDiv" class="panel panel-default col-lg-12">
+									<div class="panel-body">
+										<form action="" method="post" role="form" class="contactForm">
+
+											<h6>Instruction</h6>
+											<form method="post">
+												<textarea  ui-tinymce="tinymceOptions" id="instructionBody" ng-model="insa"> Write a JAVA program</textarea>
+											</form>
+											<br></br>
+											<h6>Question</h6>
+											<form method="post">
+												<textarea id="questionBody" ui-tinymce="tinymceOptions1" ng-model="quesa">Write a program that prints ‘Hello World’ to the screen.</textarea>
+											</form>
+
+
+
+										</form>
+
+
+
+
+
+									</div>
+								</div>
+
+
+
+
+
+
+							</div>
+
+
+
+
+						</div>
+
+					</div>
+
+
+					<div id="step-3" class="">
+
+
+
+
+
+						<div class="row">
+							<div class="col-lg-12">
+
+
+
+
+								<div class="row">
+
+									<div class="col-lg-12">
+										<h3 class="heading">Answer Key	</h3>
+									</div>
+
+
+
+									<div id="answerDiv" class="col-lg-10">
+										<div class="bs-callout bs-callout-success">
+											<h4>Your Question</h4>
+											<p id ="quest" ng-bind-html="insa | qf">{{insa}}</p>
+										</div>
+
+
+
+										<div class="col-lg-10">
+											<h5> Answer:  </h5>
+										</div>
+
+									</div>
+
+
+								</div>
+
+
+								<div id="questionsDiv" class="panel panel-default">									
+									<form action="" method="post" role="form" class="contactForm">
+										<div id="answerBody" ui-tinymce="tinymceOptions2" ng-model="answa">
+											<p>public class HelloWorld {</br>
+											</br>
+											public static void main(String[] args) { </br>
+										</br>
+											   // Prints "Hello, World" in the terminal window.</br>
+											System.out.println("Hello, World");
+										}</p>
+									}</div>
+								</form>
+
+							</div>
+
+
+
+
+
+
+
+						</div>
+
+
+
+
+					</div>
+
+				</div>
+
+				<div id="step-4" class="">
+
+
+
+					<div class="col-lg-12">
+						<h3 class="heading">Almost Done! Check the summary before submitting</h3>
+					</div>
+
+					<div class="col-lg-12"> <h5> Title:   </h5> The quick brown fox</div>
+					<div class="col-lg-12"> <h5> Tags: </h5> 	
+						<a href="#" class="btn btn-medium btn-rounded btn-theme">Computer</a>
+						<a href="#" class="btn btn-medium btn-rounded btn-theme">Mathematics</a> 
+
+					</div>
+					<div class="col-lg-12">
+						 <h5> Instruction:  </h5>
+						 <p id="ins" ng-bind-html="insa | qf"> 
+						 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+						 </p>
+					</div>
+					<div class="col-lg-12"> 
+						<h5> Question:  </h5> 
+						<p id="ques" ng-bind-html="quesa | qf"> 
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						</p>
+					</div>
+					<div class="col-lg-12">
+						 <h5> Answer:  </h5>
+						 <p id="answ" ng-bind-html="answa | qf"> 
+								asd
+						  </p>
+					</div>
+
+
+					<div id="finalButtons" class="row">
+						<div class="col-lg-12"> <h5> </h5> 
+
+							<a id="submitButton" href="#" class="btn btn-large btn-rounded btn-success">Submit </a>
+							<a id="cancelButton" href="#" class="btn btn-large btn-rounded btn-danger"> Cancel </a>
+
+						</div>
+					</div>
+
+
+				</div>
+
+
+			</div>
+		</div>
+{%endblock%}
+
