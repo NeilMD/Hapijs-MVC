@@ -165,37 +165,61 @@
 	
 	app.controller('myCtr', ['$scope','$sce',function($scope,$sce) {
 	  $scope.tinymceOptions = {
-	    onChange: function(e) {
-	      // put logic here for keypress and cut/paste changes
-	      	console.log(e.getContent());
-	       $('#ins').html(e.getContent());
-	    },
+	    // onChange: function(e) {
+	    //   // put logic here for keypress and cut/paste changes
+	    //   	console.log(e.getContent());	
+	    //    alert(e.getContent());
+
+	    //    return $scope.ins($sce.trustAsHtml(e.getContent));
+	    // },
 	    inline: false,
 	    plugins : 'advlist autolink link image lists charmap print preview',
 	    skin: 'lightgray',
-	    theme : 'modern'
+	    theme : 'modern',
+	  	init_instance_callback:function(editor){
+	  		$scope.ins($sce.trustAsHtml(e.getContent));
+	  		$("#submitButton").click(function(){
+	        	console.log( editor.getContent());	
+	        });
+	  	}
+        
+
 	  };
 	  $scope.tinymceOptions1 = {
-	    onChange: function(e) {
-	      // put logic here for keypress and cut/paste changes
-	      	console.log(e.getContent());
-	       return $scope.quesa($sce.trustAsHtml(e.getContent));
-	    },
+	    // onChange: function(e) {
+	    //   // put logic here for keypress and cut/paste changes
+	    //   	console.log(e.getContent());
+	    //   	$scope.quest($sce.trustAsHtml(e.getContent));
+	    //    return $scope.quesa($sce.trustAsHtml(e.getContent));
+	    // },
 	    inline: false,
 	    plugins : 'advlist autolink link image lists charmap print preview',
 	    skin: 'lightgray',
-	    theme : 'modern'
+	    theme : 'modern',
+	    init_instance_callback:function(editor){
+	  		$scope.quesa($sce.trustAsHtml(e.getContent));
+	  		$("#submitButton").click(function(){
+	        	console.log( editor.getContent());	
+	        });
+	  	}
 	  };
 	  $scope.tinymceOptions2 = {
-	    onChange: function(e) {
-	      // put logic here for keypress and cut/paste changes
-	      	console.log(e.getContent());
-	       $('#ans').html(e.getContent());
-	    },
+	    // onChange: function(e) {
+	    //   // put logic here for keypress and cut/paste changes
+	    //   	console.log(e.getContent());
+	    //    // $('#ans').html(e.getContent());
+	    //    return $scope.answa($sce.trustAsHtml(e.getContent));
+	    // },
 	    inline: false,
 	    plugins : 'advlist autolink link image lists charmap print preview',
 	    skin: 'lightgray',
-	    theme : 'modern'
+	    theme : 'modern',
+	    init_instance_callback:function(editor){
+	  		$scope.answa($sce.trustAsHtml(e.getContent));
+	  		$("#submitButton").click(function(){
+	        	console.log( editor.getContent());	
+	        });
+	  	}
 	  };
 	}]);
 	angular.module('test')
@@ -255,6 +279,9 @@
             transitionSpeed: '400',
 
         });
+        // $("#submitButton").click(function(){
+        // 	console.log( tinymce.get('answerBody').getContent());	
+        // })
         
 
 		
