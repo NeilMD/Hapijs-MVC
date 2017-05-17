@@ -17,6 +17,14 @@ module.exports = [
 	},	
 	{
 		method:'POST',
+		path: '/getData',
+		handler: testController.getData,
+		config:{
+			description: "getData"
+		}
+	},	
+	{
+		method:'POST',
 		path: '/upload',
 		handler: testController.create,
 		config:{

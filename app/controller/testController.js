@@ -81,6 +81,10 @@ module.exports =  {
 		reply('Wla na ');
 		
 	},
+	getData:(request, reply) =>{
+		// console.log(request.payload.data);
+		
+	},
 
 
 
