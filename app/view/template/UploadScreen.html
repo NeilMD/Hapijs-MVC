@@ -177,7 +177,12 @@
 	    skin: 'lightgray',
 	    theme : 'modern',
 	  	init_instance_callback:function(editor){
-	  		
+	  		editor.on('drop',function(){
+	    		editor.focus();
+	    	});
+	  		$("button.sw-btn-next").click(function(){
+	        	$(this).blur();
+	     	});
 	  		
 	  	}
         
@@ -194,7 +199,40 @@
 	    skin: 'lightgray',
 	    theme : 'modern',
 	    init_instance_callback:function(editor){
+	    	editor.on('drop',function(){
+	    		editor.focus();
+	    	});
+	    	$("button.sw-btn-next").click(function(){
+	        	$(this).blur();
+	     	});
 	    	
+	  		
+	  	}
+	  };
+	  $scope.tinymceOptions2 = {
+	    // onChange: function(e) {
+	    //   // put logic here for keypress and cut/paste changes
+	    //   	// console.log("Upload");
+	    //    // $('#ans').html(e.getContent());
+	    //    // return $scope.answa($sce.trustAsHtml(e.getContent));
+	    // },
+	    inline: false,
+	    plugins : 'advlist autolink link image lists charmap print preview',
+	    skin: 'lightgray',
+	    theme : 'modern',
+	    init_instance_callback:function(editor){
+	    	editor.on('drop',function(){
+	    		editor.focus();
+	    	});
+	    	$("button.sw-btn-next").click(function(){
+	    		// var s = "<script>m,mn,mn<"+'/' +"script>";
+	      //   	$(this).html(s);
+	     	});
+	    	console.log("init");
+	  		
+	  		$("#submitButton").click(function(){
+	        	console.log( editor.getContent());	
+	        });
 	  		$("#submitButton").click(function(){
 	        	$.ajax({
 	        		type:'POST',
@@ -205,26 +243,10 @@
 	        		}
 	        	})
 	        });
-	  	}
-	  };
-	  $scope.tinymceOptions2 = {
-	    onChange: function(e) {
-	      // put logic here for keypress and cut/paste changes
-	      	console.log(e.getContent());
-	       // $('#ans').html(e.getContent());
-	       // return $scope.answa($sce.trustAsHtml(e.getContent));
-	    },
-	    inline: false,
-	    plugins : 'advlist autolink link image lists charmap print preview',
-	    skin: 'lightgray',
-	    theme : 'modern',
-	    init_instance_callback:function(editor){
-	    	console.log("init");
-	  		
-	  		$("#submitButton").click(function(){
-	        	console.log( editor.getContent());	
-	        });
-	  	}
+	        
+	  	},
+
+	  	
 	  };
 	}]);
 	angular.module('test')
@@ -286,8 +308,10 @@
         });
         $("button.sw-btn-next").click(function(){
 	        	console.log("asd");	
-	        });
-        
+	     });
+        $("#submitButton").click(function(){
+	        	console.log("asd");	
+	     });
 
 		
 	});

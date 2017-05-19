@@ -82,7 +82,12 @@ module.exports =  {
 		
 	},
 	getData:(request, reply) =>{
-		// console.log(request.payload.data);
+		var html = request.payload.data;
+		
+		var htmlObj = document.createElement('div');
+		htmlObj.innerHTML = html;
+		var htmlObj = (html).getElementsByTagName("img").setAttribute("src","image.jpg");
+		console.log(html);
 		
 	},
 
