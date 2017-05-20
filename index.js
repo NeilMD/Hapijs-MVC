@@ -24,6 +24,8 @@ server.connection({port:3000});
 server.register([
         require('vision'),
         require('inert'),
+        
+        // require('cheerio'),
         {register: require('yar'), options},
         // {
         //     register: require('hapi-server-session'),

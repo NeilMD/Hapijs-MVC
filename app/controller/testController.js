@@ -2,7 +2,12 @@
 // const Path = require('path');
 var Joi = require('joi'),
     Boom = require('boom'),
-    act = require('../model/testModel').act;
+    act = require('../model/testModel').act,
+    imgModel = require('../model/testModel').img,
+
+    cheerio = require('cheerio'),
+    fs = require('fs');
+
 
 module.exports =  {
 	test:(request ,reply) =>{
@@ -82,14 +87,50 @@ module.exports =  {
 		
 	},
 	getData:(request, reply) =>{
-		var html = request.payload.data;
+		// console.log(request.payload.data);
+
+		var img = [];
+		var type = [];
+		var data = [];
+		var ctr=0;;
+		var $ = cheerio.load(request.payload.data);		
+		$("img").each(function(i,elem){
+			
+			var str = $(this).attr("src");
+			// console.log("NEIL: "+str);
+			var col = str.indexOf(':');
+			var semi = str.indexOf(';');
+			var comma = str.indexOf(',');
 		
-		var htmlObj = document.createElement('div');
-		htmlObj.innerHTML = html;
-		var htmlObj = (html).getElementsByTagName("img").setAttribute("src","image.jpg");
-		console.log(html);
-		
+			type[ctr] = str.substring(col+1,semi);
+			data[ctr] = str.substring(comma+1);
+			
+			img[ctr] = data[ctr];
+			
+			$(this).attr("src","img.png");
+			ctr++;
+
+		});
+		// var htmlObj = (html).getElementsByTagName("img").setAttribute("src","image.jpg");
+		var buf = new Buffer(data[0], 'base64');
+
+		imgModel.write({
+			filename:'sample.png',
+			contentType: type[0]
+			},
+			fs.readFile(data[0],'base64'),
+			function(error, createdFile){
+				console.log(createdFile);
+				// console.log(createdFile);
+			}
+		);
+
+		// console.log(data);
+		// console.log(base_64_encode(type[0]));
+
+		// reply()
 	},
+
 
 
 

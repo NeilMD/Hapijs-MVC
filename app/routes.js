@@ -20,7 +20,11 @@ module.exports = [
 		path: '/getData',
 		handler: testController.getData,
 		config:{
-			description: "getData"
+			description: "getData",
+			payload: {
+	            // parse: false,
+	            maxBytes: 104857600
+	        }
 		}
 	},	
 	{
