@@ -5,255 +5,203 @@
 {%endblock%}
 
 {%block container%}
-<div class="container" ng-app="test" ng-controller="myCtr">
-		
-			<div id="smartwizard" class="row">
-				<ul>
-					<li><a href="#step-1"><big>Information</big><br /><medium>Say something about your submission</medium></a></li>
-					<li><a href="#step-2"><big>Question</big><br /><medium>Input your submission</medium></a></li>
-					<li><a href="#step-3"><big>Answer Key</big><br /><medium>Input the answer to your submission</medium></a></li>
-					<li><a href="#step-4"><big>Summary </big><br /><medium>Summary of your contribution</medium></a></li>
-
-				</ul>
-
-				<div>
-					<div id="step-1" class="">
-						<div class="row">
-							<div class="col-lg-8">
-
-
-
-								<div class="row">
-									<div class="col-lg-12">
-										<h3 class="heading">Information</h3>
-
-									</div>
+<!-- Content -->
+<section class="content">
+	<div class="container"  ng-app="test" ng-controller="myCtr">
+		<div id="smartwizard" class="row">
+			<!-- Tabs for the steps -->
+			<ul>
+				<li><a href="#step-1"><big>STEP 1</big><br /><medium>Basic information</medium></a></li>
+				<li><a href="#step-2"><big>STEP 2</big><br /><medium>Exercise Content</medium></a></li>
+				<li><a href="#step-3"><big>STEP 3</big><br /><medium>Answer Key</medium></a></li>
+				<li><a href="#step-4"><big>STEP 4</big><br /><medium>Confirmation</medium></a></li>
+			</ul>
+			<!-- End of tabs for the steps -->
+			<div>
+				<!-- STEP 1 - Basic Information -->
+				<div id="step-1">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<!-- STEP 1 Instructions -->
+							<div class="row instructionDiv">
+								<div class="col-lg-12">
+									<h3 class="heading marginbot10">Thank you for deciding to contribute!</h3>
+									<p>First, tell us what your exercise is all about. This will help others easily find it.</p>
 								</div>
-
-
-
-
-								<div id="informationDiv" class="panel panel-default">
-									<div class="panel-body">
-										<form action="" method="post" role="form" class="contactForm">
-											<h6>Title</h6>
-											<div class="form-group">
-												<input type="text" name="name" class="form-control" id="name" placeholder="Activity Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-												<div class="validation"></div>
-											</div>
-											<h6>Category</h6>
-											<div class="form-group">
-												<input type="email" class="form-control" name="email" id="email" placeholder="e.g." data-rule="email" data-msg="Please enter a valid email" />
-												<div class="validation"></div>
-											</div>
-											<h6>Subject</h6>
-											<div class="form-group">
-												<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-												<div class="validation"></div>
-											</div>
-											<div>
-												<h6> Tags: </h6>
-											</div>
-
-											<div class="col-lg-12">
-
-												<a href="#" class="btn btn-large btn-rounded btn-theme">Computer</a>
-												<a href="#" class="btn btn-large btn-rounded btn-theme">Mathematics</a>
-
-											</div>
-
-
-										</form>
-									</div>
-								</div>
-
-
-
 							</div>
-
-
-
-						</div>
-					</div>
-					<div id="step-2" class="">
-
-
-
-
-						<div class="row">
-							<div class="col-lg-12">
-
-
-
-
-								<div class="row">
-									<div class="col-lg-12">
-										<h3 class="heading">Question</h3>
-
-									</div>
-								</div>
-
-
-
-
-								<div id="questionsDiv" class="panel panel-default col-lg-12">
-									<div class="panel-body">
-										<form action="" method="post" role="form" class="contactForm">
-
-											<h6>Instruction</h6>
-											<form method="post">
-												<textarea  ui-tinymce="tinymceOptions" id="instructionBody" ng-model="insa"> Write a JAVA program</textarea>
-											</form>
-											<br></br>
-											<h6>Question</h6>
-											<form method="post">
-												<textarea id="questionBody" ui-tinymce="tinymceOptions1" ng-model="quesa">Write a program that prints ‘Hello World’ to the screen.</textarea>
-											</form>
-
-
-
-										</form>
-
-
-
-
-
-									</div>
-								</div>
-
-
-
-
-
-
-							</div>
-
-
-
-
-						</div>
-
-					</div>
-
-
-					<div id="step-3" class="">
-
-
-
-
-
-						<div class="row">
-							<div class="col-lg-12">
-
-
-
-
-								<div class="row">
-
-									<div class="col-lg-12">
-										<h3 class="heading">Answer Key	</h3>
-									</div>
-
-
-
-									<div id="answerDiv" class="col-lg-10">
-										<div class="bs-callout bs-callout-success">
-											<h4>Your Question</h4>
-											<p id ="quest" ng-bind-html="quesa | qf">
-												{{quest}}
-											</p>
-										</div>
-
-
-
-										<div class="col-lg-10">
-											<h5> Answer:  </h5>
-										</div>
-
-									</div>
-
-
-								</div>
-
-
-								<div id="questionsDiv" class="panel panel-default">									
+							<!-- End of STEP 1 Instructions -->
+							<!-- STEP 1 Content -->
+							<div id="informationDiv" class="panel panel-default">
+								<div class="panel-body">
 									<form action="" method="post" role="form" class="contactForm">
-										<div id="answerBody" ui-tinymce="tinymceOptions2" ng-model="answa">
-											<p>public class HelloWorld {</br>
-											</br>
-											public static void main(String[] args) { </br>
-										</br>
-											   // Prints "Hello, World" in the terminal window.</br>
-											System.out.println("Hello, World");
-										}</p>
-									}</div>
-								</form>
-
+										<div class="form-group">
+											<!-- Exercise Title -->
+											<h6>Exercise Title</h6>
+											<input type="text" name="exercise-title" class="form-control" id="exercise-title" placeholder="e.g. Programming with if Statements" />
+											<!-- End of Exercise Title -->
+											<!-- Subject Area -->
+											<h6>Subject Area</h6>
+											<select name="subject" data-placeholder="e.g. Variables and Expressions" id="subject-select">
+												<optgroup label="Programming">
+													<option>Variables and Expressions</option>
+													<option>Conditional Statements</option>
+													<option>Iterative Statements</option>
+												</optgroup>
+												<optgroup label="Databases">
+													<option>Database Design</option>
+													<option>SQL Queries</option>
+												</optgroup>
+												<optgroup label="Primary Math">
+													<option>Basic Arithmetic</option>
+													<option>Fractions</option>
+													<option>Decimals</option>
+												</optgroup>																
+											</select>
+											<!-- End of Subject Area -->
+											<!-- Tags -->
+											<h6>Tags</h6>
+											<input type="text" name="tags" placeholder="e.g. Java,easy,shopping" class="tm-input"/>
+											<!-- End of tags -->						
+										</div>
+									</form>
+								</div>
 							</div>
-
-
-
-
-
-
-
+							<!-- End of STEP 1 Content -->
 						</div>
-
-
-
-
 					</div>
-
 				</div>
+				<!-- STEP 2 - Exercise Content -->	
+				<div id="step-2" class="">
+					<div class="row">
+						<div class="col-lg-12">
+							<!-- STEP 2 Instructions -->
+							<div class="row">
+								<div class="col-lg-12">
+									<h3 class="heading marginbot10">Sounds great!</h3>
+									<p>Next, write down or paste your exercise here. Make sure there are no typos!</p>
+								</div>
+							</div>
+							<!-- End of STEP 2 Instructions -->
+							<!-- STEP 2 Content -->
+							<div id="questionsDiv" class="panel panel-default col-lg-12">
+								<div class="panel-body">
+									<form action="" method="post" role="form" class="contactForm">
+										<!-- Instructions input -->
+										<h6>Instruction</h6>
+										<textarea ui-tinymce="tinymceOptions" id="instructionBody" ng-model="insa">
 
+										</textarea>
+										<!-- End of Instructions input -->
+										<!-- Content input -->
+										<h6>Content</h6>
+										<textarea id="questionBody" ui-tinymce="tinymceOptions1" ng-model="quesa">
+
+										</textarea>
+										<!-- End of Content input -->
+									</form>
+								</div>
+							</div>
+							<!-- End of STEP 2 Content -->
+						</div>
+					</div>
+				</div>
+				<!-- End of STEP 2 Exercise Content -->
+				<!-- STEP 3 - Answer Key -->
+				<div id="step-3" class="">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="row">
+								<!-- STEP 3 Instructions -->
+								<div class="col-lg-12">
+									<h3 class="heading">Does your exercise have an answer key?</h3>
+									<p>Providing the answers to objective exercises can help the people who will use your exercise greatly.</p>
+								</div>
+								<!-- End of STEP 3 Instructions -->
+								<!-- STEP 3 Content -->
+								<form action="" method="post" role="form" class="contactForm">
+									<div id="answerDiv" class="col-md-6">
+										<!-- Your Exercise -->
+										<h6>Your Exercise</h6>
+										<div id ="quest" ng-bind-html="quesa | qf">
+											{{quest}}
+										</div>
+										<!-- End of Your Exercise -->
+									</div>
+									<!-- Answer Key -->
+									<div class="col-md-6">
+										<h6> Answer Key</h6>
+										<textarea id="answerBody" ui-tinymce="tinymceOptions2" ng-model="answa">
+
+										</textarea>
+									</div>
+									<!-- End of Answer Key -->
+								</form>
+								<!-- End of STEP 3 Content -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- STEP 4 - Review -->
 				<div id="step-4" class="">
-
-
-
-					<div class="col-lg-12">
-						<h3 class="heading">Almost Done! Check the summary before submitting</h3>
-					</div>
-
-					<div class="col-lg-12"> <h5> Title:   </h5> The quick brown fox</div>
-					<div class="col-lg-12"> <h5> Tags: </h5> 	
-						<a href="#" class="btn btn-medium btn-rounded btn-theme">Computer</a>
-						<a href="#" class="btn btn-medium btn-rounded btn-theme">Mathematics</a> 
-
-					</div>
-					<div class="col-lg-12">
-						 <h5> Instruction:  </h5>
-						 <p id="ins" ng-bind-html="insa | qf"> 
-						 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-						 </p>
-					</div>
-					<div class="col-lg-12"> 
-						<h5> Question:  </h5> 
-						<p id="ques" ng-bind-html="quesa | qf"> 
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</div>
-					<div class="col-lg-12">
-						 <h5> Answer:  </h5>
-						 <p id="answ" ng-bind-html="answa | qf"> 
-								
-						  </p>
-					</div>
-
-
-					<div id="finalButtons" class="row">
-						<div class="col-lg-12"> <h5> </h5> 
-
-							<a id="submitButton" href="#" class="btn btn-large btn-rounded btn-success">Submit </a>
-							<a id="cancelButton" href="#" class="btn btn-large btn-rounded btn-danger"> Cancel </a>
-
+					<!-- STEP 4 Instructions -->
+					<div class="row">
+						<div class="col-lg-12">
+							<h3 class="heading">Almost Done!</h3>
+							<p>Please make sure you've typed everything correctly before submitting.</p>
 						</div>
 					</div>
+					<!-- End of STEP 4 Instructions -->
+					<!-- STEP 4 Content -->
+					<form>
+						<div class="row">
+							<!-- Title -->
+							<div class="col-md-4">
+								<h6> Title</h6>
+								<p>Simple Math Problems
+								</div>
+								<!-- End of Title -->
+								<!-- Subject Area -->
+								<div class="col-md-4">
+									<h6> Subject Area</h6>
+									<p>Basic Arithmetic</p>
+								</div>
+								<!-- End of Subject Area -->
+								<!-- Tags -->
+								<div class="col-md-4">
+									<h6>Tags</h6> 	
+									<a href="#" class="btn btn-medium btn-rounded btn-theme">math</a>
+									<a href="#" class="btn btn-medium btn-rounded btn-theme">easy</a> 
+								</div>
+								<!-- End of Tags -->
+							</div>
+							<!-- Your Exercise and Answer Key -->
+							<div class="row">
+								<div class="col-md-6">
+									<h6>Your Exercise</h6>
+										<p id="ins" ng-bind-html="insa | qf"> 
+										  
+										</p>
+										<p id="ques" ng-bind-html="quesa | qf"> 
+										
+										</p>								
 
-
+								</div>
+								<div class="col-md-6">
+									<h6> Your Answer Key</h6>
+									<p id="answ" ng-bind-html="answa | qf"> 
+								
+						 			</p>
+								</div>
+							</div>
+							<!-- End of Exercise and Your Answer Key -->
+						</form>
+						<!-- End of STEP 4 Content -->
+					</div>
+					<!-- End of STEP 4 - Review -->
 				</div>
-
-
 			</div>
 		</div>
+	</section>
+<!-- End of content -->
 {%endblock%}
 

@@ -20,21 +20,25 @@ header .nav li.active ul.dropdown-menu li a:hover,
 header .nav li.active ul.dropdown-menu li.active a{
 	color:#68A4C4;
 }
+
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
 	color:#68A4C4;
 }
+
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
 	color:#68A4C4;
-}	
+}
+	
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
 	color:#68A4C4;
 }
+
 /* === background color === */
 
 .custom-carousel-nav.right:hover, .custom-carousel-nav.left:hover, 
