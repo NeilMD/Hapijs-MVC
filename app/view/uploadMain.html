@@ -37,30 +37,30 @@
 										<div class="form-group">
 											<!-- Exercise Title -->
 											<h6>Exercise Title</h6>
-											<input type="text" name="exercise-title" class="form-control" id="exercise-title" placeholder="e.g. Programming with if Statements" />
+											<input type="text" ng-model="exe" name="exercise-title" class="form-control" id="exercise-title" placeholder="e.g. Programming with if Statements" />
 											<!-- End of Exercise Title -->
 											<!-- Subject Area -->
 											<h6>Subject Area</h6>
-											<select name="subject" data-placeholder="e.g. Variables and Expressions" id="subject-select">
+											<select name="subject" ng-model="sel" data-placeholder="e.g. Variables and Expressions" id="subject-select">
 												<optgroup label="Programming">
-													<option>Variables and Expressions</option>
-													<option>Conditional Statements</option>
-													<option>Iterative Statements</option>
+													<option value="Variables and Expressions">Variables and Expressions</option>
+													<option value="Conditional Statements">Conditional Statements</option>
+													<option value="Iterative Statements">Iterative Statements</option>
 												</optgroup>
 												<optgroup label="Databases">
-													<option>Database Design</option>
-													<option>SQL Queries</option>
+													<option value="Database Design">Database Design</option>
+													<option value="SQL Queries">SQL Queries</option>
 												</optgroup>
 												<optgroup label="Primary Math">
-													<option>Basic Arithmetic</option>
-													<option>Fractions</option>
-													<option>Decimals</option>
+													<option value="Basic Arithmetic">Basic Arithmetic</option>
+													<option value="Fractions">Fractions</option>
+													<option value="Decimals">Decimals</option>
 												</optgroup>																
 											</select>
 											<!-- End of Subject Area -->
 											<!-- Tags -->
 											<h6>Tags</h6>
-											<input type="text" name="tags" placeholder="e.g. Java,easy,shopping" class="tm-input"/>
+											<input type="text" ng-model="tag" name="tags" placeholder="e.g. Java,easy,shopping" class="tm-input"/>
 											<!-- End of tags -->						
 										</div>
 									</form>
@@ -122,9 +122,12 @@
 									<div id="answerDiv" class="col-md-6">
 										<!-- Your Exercise -->
 										<h6>Your Exercise</h6>
-										<div id ="quest" ng-bind-html="quesa | qf">
-											{{quest}}
-										</div>
+										<p id="ins" ng-bind-html="insa | qf"> 
+										  
+										</p>
+										<p id="ques" ng-bind-html="quesa | qf"> 
+										
+										</p>		
 										<!-- End of Your Exercise -->
 									</div>
 									<!-- Answer Key -->
@@ -157,20 +160,23 @@
 							<!-- Title -->
 							<div class="col-md-4">
 								<h6> Title</h6>
-								<p>Simple Math Problems
+								<p ng-bind="exe"></p>
 								</div>
 								<!-- End of Title -->
 								<!-- Subject Area -->
 								<div class="col-md-4">
 									<h6> Subject Area</h6>
-									<p>Basic Arithmetic</p>
+									<p ng-bind="sel"></p>
 								</div>
 								<!-- End of Subject Area -->
 								<!-- Tags -->
 								<div class="col-md-4">
 									<h6>Tags</h6> 	
-									<a href="#" class="btn btn-medium btn-rounded btn-theme">math</a>
-									<a href="#" class="btn btn-medium btn-rounded btn-theme">easy</a> 
+									 
+									 <a  ng-repeat="model in tag " href="#" class="btn btn-medium btn-rounded btn-theme">{{model}}</a>
+								 
+									
+									
 								</div>
 								<!-- End of Tags -->
 							</div>

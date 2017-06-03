@@ -93,6 +93,7 @@
 		<!-- Wizard -->	
 		<script type="text/javascript" src="js/jquery.smartWizard.min.js"></script>
 		<script src="js/chosen.jquery.min.js"></script>
+		<!-- <script src="js/selectize.js"></script> -->
 
 		<!-- Include Editor JS files. -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1//js/froala_editor.pkgd.min.js"></script>
@@ -111,64 +112,84 @@
 		<!-- Scripts -->
 			<script>
 			$(document).ready(function(){
-				$('#smartwizard').smartWizard({
+				var content,instruction, answer;
+				var sw = $('#smartwizard').smartWizard({
 					transitionEffect: 'fade', // Effect on navigation, none/slide/fade
 					transitionSpeed: '400',
-					toolbarSettings: {
-						toolbarExtraButtons: [
-							$('<button></button>').text('Finish')
-								.attr("id", "finish")
-								.addClass('btn btn-info')
-								.on('click', function(){ 
-									alert('Finsih button click');                            
-								})
-						]
+					
+				});
+				$(".sw-btn-next").click(function(){
+					if($(this).html() == "Finish" && $(this).hasClass("last")){
+						console.log($("#ins").html());
+						console.log($("#answ").html());
+						console.log($("#ques").html());
+						console.log("SEE");
 					}
 				});
-					tinymce.init({
-							selector: 'textarea#answerkey',
-							height: $("#answerkeyexercise").height(),
-							menubar: false,
-							plugins: [
-							],
-							style_formats: [
-								{title: 'Heading', format: 'h3', classes: 'elixir-heading'},
-								{title: 'Content', format: 'p', classes: 'elixir-content'}
-							],
-							toolbar: 'undo redo | styleselect | bold italic underline',
-							content_css: 'css/tinymce.css'
-						});
-					tinymce.init({
-							selector: 'textarea#instructions',
-							height: 30,
-							menubar: false,
-							plugins: [
-							],
-							style_formats: [
-								{title: 'Content', format: 'p', classes: 'elixir-content'}
-							],
-							toolbar: 'undo redo | styleselect | bold italic underline',
-							content_css: 'css/tinymce.css'
-						});
-						tinymce.init({
-							selector: 'textarea#content',
-							height: 450,
-							menubar: false,
-							plugins: [
-							],
-							style_formats: [
-								{title: 'Heading', format: 'h3', classes: 'elixir-heading'},
-								{title: 'Content', format: 'p', classes: 'elixir-content'}
-							],
-							toolbar: 'undo redo | styleselect | bold italic underline',
-							content_css: 'css/tinymce.css'
-						});
+				$("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
+					console.log(stepNumber);
+
+			         if(stepNumber == 3){
+			         	// console.log(tinymce.get(ans).getContent());
+			         	$(".sw-btn-next").html("Finish");			         	
+			         	$(".sw-btn-next").removeClass("disabled").addClass("last");
+			         }
+			    });
+		          $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
+			         console.log("Do you want to leave the step "+stepNumber+"?");
+			      });
+
+				var ans  = tinymce.init({
+					selector: 'textarea#answerkey',
+					height: $("#answerkeyexercise").height(),
+					menubar: false,
+					 
+					style_formats: [
+						{title: 'Heading', format: 'h3', classes: 'elixir-heading'},
+						{title: 'Content', format: 'p', classes: 'elixir-content'}
+					],
+					toolbar: 'undo redo | styleselect | bold italic underline',
+					content_css: 'css/tinymce.css'
+				});
+				var ins = tinymce.init({
+					selector: 'textarea#instructions',
+					height: 30,
+					menubar: false,
+					 
+					style_formats: [
+						{title: 'Content', format: 'p', classes: 'elixir-content'}
+					],
+					toolbar: 'undo redo | styleselect | bold italic underline',
+					content_css: 'css/tinymce.css'
+				});
+				var con = tinymce.init({
+					selector: 'textarea#content',
+					height: 450,
+					menubar: false,
+					 
+					style_formats: [
+						{title: 'Heading', format: 'h3', classes: 'elixir-heading'},
+						{title: 'Content', format: 'p', classes: 'elixir-content'}
+					],
+					toolbar: 'undo redo | styleselect | bold italic underline',
+					content_css: 'css/tinymce.css'
+				});
 				$("#finish").addClass("disabled");
 			
 			  	$("select#subject-select").chosen({
 					width: "100%"
 				});
-				$(".tm-input").tagsManager();
+					
+				// 	$(".tm-input").selectize({
+				//     delimiter: ',',
+				//     persist: false,
+				//     create: function(input) {
+				//         return {
+				//             value: input,
+				//             text: input
+				//         }
+				//     }
+				// });
 			});
 		</script>
 		
@@ -177,13 +198,9 @@
 		
 		app.controller('myCtr', ['$scope','$sce',function($scope,$sce) {
 		  $scope.tinymceOptions = {
-		    // onChange: function(e) {
-		    //   // put logic here for keypress and cut/paste changes
-		    //   	console.log("init2");
-		    //  	$("#ins").html(e.getContent());
-		      	
-		    //    // return $scope.ins($sce.trustAsHtml(e.getContent));
-		    // },
+		    onChange: function(e) {
+		    	
+		    },
 
 		    inline: false,
 		    plugins : 'advlist autolink link image lists charmap print preview',
@@ -205,17 +222,18 @@
 		  		$("button.sw-btn-next").click(function(){
 		        	$(this).blur();
 		     	});
+
 		  		
 		  	}
 	        
 
 		  };
 		  $scope.tinymceOptions1 = {
-		    // onChange: function(e) {
-		    //   // put logic here for keypress and cut/paste changes
-		    //   	console.log(e.getContent());
+		    onChange: function(e) {
+		      // put logic here for keypress and cut/paste changes
+		      	console.log(e.getContent());
 		      
-		    // },
+		    },
 
 			height: 450,
 			menubar: false,
@@ -243,12 +261,12 @@
 		  	}
 		  };
 		  $scope.tinymceOptions2 = {
-		    // onChange: function(e) {
-		    //   // put logic here for keypress and cut/paste changes
-		    //   	// console.log("Upload");
-		    //    // $('#ans').html(e.getContent());
-		    //    // return $scope.answa($sce.trustAsHtml(e.getContent));
-		    // },
+		    onChange: function(e) {
+		      // put logic here for keypress and cut/paste changes
+		      	console.log(e);
+		       // $('#ans').html(e.getContent());
+		       // return $scope.answa($sce.trustAsHtml(e.getContent));
+		    },
 		    inline: false,
 		    height: $("#quest").height(),
 			menubar: false,
