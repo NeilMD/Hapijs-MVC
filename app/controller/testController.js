@@ -4,10 +4,44 @@ var Joi = require('joi'),
     Boom = require('boom'),
     act = require('../model/testModel').act,
     imgModel = require('../model/testModel').img,
-
+    generateID = require("unique-id-generator"),
     cheerio = require('cheerio'),
     fs = require('fs');
+// Save to server and change src of img
+function src(html){
+	var img = [];
+	var type = [];
+	var data = [];
+	var ctr=0;
 
+	var $ = cheerio.load(html);		
+	// console.log(html);
+	$("img").each(function(i,elem){
+		
+		var str = $(this).attr("src");
+		// console.log("NEIL: "+str);
+		var col = str.indexOf(':');
+		var semi = str.indexOf(';');
+		var comma = str.indexOf(',');
+		
+		type[ctr] = str.substring(col+1,semi);
+		var dataType = str.substring(str.indexOf("/")+1,semi);
+		data[ctr] = str.substring(comma+1);
+		
+		img[ctr] = data[ctr];
+		
+		//TEMP. Should be stored in a folder for that account.
+		var location = './public/styles/img/' + generateID({prefix:"id-"}) + '.'+ dataType;
+		var content = fs.writeFile(location, img[ctr] ,'base64');
+		$(this).attr("src",location);
+		// console.log(img[ctr]);
+		
+		ctr++;
+
+	});
+	console.log($.html());
+	return $.html();
+}
 
 module.exports =  {
 	test:(request ,reply) =>{
@@ -87,47 +121,15 @@ module.exports =  {
 		
 	},
 	getData:(request, reply) =>{
-		// console.log(request.payload.data);
-
-		var img = [];
-		var type = [];
-		var data = [];
-		var ctr=0;;
-		var $ = cheerio.load(request.payload.data);		
-		$("img").each(function(i,elem){
-			
-			var str = $(this).attr("src");
-			// console.log("NEIL: "+str);
-			var col = str.indexOf(':');
-			var semi = str.indexOf(';');
-			var comma = str.indexOf(',');
+		var data = request.payload;
+		var title = data["title"];
+		var area = data["area"];
+		var tags = data["tags[]"];
+		var ans = src(data["ans"]);
+		var ins = src(data["ins"]);
+		var ques = src(data["ques"]);
 		
-			type[ctr] = str.substring(col+1,semi);
-			data[ctr] = str.substring(comma+1);
-			
-			img[ctr] = data[ctr];
-			
-			$(this).attr("src","img.png");
-			ctr++;
-
-		});
-		// var htmlObj = (html).getElementsByTagName("img").setAttribute("src","image.jpg");
-		var buf = new Buffer(data[0], 'base64');
-
-		imgModel.write({
-			filename:'sample.png',
-			contentType: type[0]
-			},
-			fs.readFile(data[0],'base64'),
-			function(error, createdFile){
-				console.log(createdFile);
-				// console.log(createdFile);
-			}
-		);
-
-		// console.log(data);
-		// console.log(base_64_encode(type[0]));
-
+		
 		// reply()
 	},
 

@@ -111,6 +111,8 @@
 		<script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
 		<!-- Scripts -->
 			<script>
+
+
 			$(document).ready(function(){
 				var content,instruction, answer;
 				var sw = $('#smartwizard').smartWizard({
@@ -120,9 +122,21 @@
 				});
 				$(".sw-btn-next").click(function(){
 					if($(this).html() == "Finish" && $(this).hasClass("last")){
-						console.log($("#ins").html());
-						console.log($("#answ").html());
-						console.log($("#ques").html());
+						var title = $("#exercise-title").val();
+						var area = $("#subject-select").val();
+						var tags = $("input[type='hidden']").val().split(",");
+						var ins = $("#ins").html();
+						var ans = $("#answ").html();
+						var ques = $("#ques").html();
+						$.ajax({
+							type:'POST',
+							url:'/getData',
+							data:{title:title, area:area, tags:tags,ins:ins,ans:ans,ques:ques },
+							success:function(success){
+								console.log("success");
+							}
+						});
+						console.log(tags);
 						console.log("SEE");
 					}
 				});
@@ -131,12 +145,17 @@
 
 			         if(stepNumber == 3){
 			         	// console.log(tinymce.get(ans).getContent());
+			         	console.log($("input[type='hidden']").val());
 			         	$(".sw-btn-next").html("Finish");			         	
 			         	$(".sw-btn-next").removeClass("disabled").addClass("last");
+
 			         }
 			    });
 		          $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber, stepDirection) {
-			         console.log("Do you want to leave the step "+stepNumber+"?");
+			         if(stepNumber == 3){
+			         	$(".sw-btn-next").html("Next");			         	
+			         	$(".sw-btn-next").removeClass("last");	
+			         }
 			      });
 
 				var ans  = tinymce.init({
@@ -179,7 +198,7 @@
 			  	$("select#subject-select").chosen({
 					width: "100%"
 				});
-					
+				$(".tm-input").tagsManager();
 				// 	$(".tm-input").selectize({
 				//     delimiter: ',',
 				//     persist: false,

@@ -19,6 +19,7 @@
     "mongoose-gridfs": "^0.1.0",
     "nunjucks-hapi": "^2.1.0",
     "promise": "^7.1.1",
+    "unique-id-generator": "^1.0.1",
     "vision": "^4.1.1",
     "yar": "^8.1.2"
   }

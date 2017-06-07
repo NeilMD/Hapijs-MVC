@@ -60,7 +60,7 @@
 											<!-- End of Subject Area -->
 											<!-- Tags -->
 											<h6>Tags</h6>
-											<input type="text" ng-model="tag" name="tags" placeholder="e.g. Java,easy,shopping" class="tm-input"/>
+											<input id="tm" type="text" ng-model="tag" name="tags" placeholder="e.g. Java,easy,shopping" class="tm-input tm-tag-success"/>
 											<!-- End of tags -->						
 										</div>
 									</form>
@@ -172,9 +172,9 @@
 								<!-- Tags -->
 								<div class="col-md-4">
 									<h6>Tags</h6> 	
-									 
-									 <a  ng-repeat="model in tag " href="#" class="btn btn-medium btn-rounded btn-theme">{{model}}</a>
-								 
+									 <div id="tagDiv">
+									 <a href="#" class="btn btn-medium btn-rounded btn-theme"></a>
+								 	</div>
 									
 									
 								</div>
