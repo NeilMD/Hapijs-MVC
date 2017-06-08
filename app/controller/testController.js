@@ -36,10 +36,11 @@ function src(request, html){
 		if(!fs.existsSync(tempLoc)){
 			var as = fs.mkdir(tempLoc);
 		}
-
-		var location = tempLoc+'/' + generateID({prefix:"id-"+accID}) + '.'+ dataType;
+		var file = generateID({prefix:"id-"+accID}) + '.'+ dataType;
+		var location = tempLoc+'/' + file ;
 		var content = fs.writeFile(location, img[ctr] ,'base64');
-		$(this).attr("src",location);
+		var srcLocation = "./usr/img/" + accID +"/"+ file;
+		$(this).attr("src",srcLocation);
 		// console.log(img[ctr]);
 		
 		ctr++;
