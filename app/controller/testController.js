@@ -122,13 +122,36 @@ module.exports =  {
 	},
 	getData:(request, reply) =>{
 		var data = request.payload;
+
 		var title = data["title"];
 		var area = data["area"];
 		var tags = data["tags[]"];
 		var ans = src(data["ans"]);
 		var ins = src(data["ins"]);
 		var ques = src(data["ques"]);
-		
+		try{
+			var acts = new act({
+				title: title,
+				category:area,
+				tags:tags,
+				instruction:ins,
+				question:ques,
+				answer:ans
+			});
+		}catch(err){
+			console.log(err);
+
+			reply("Failed")
+		}
+
+		acts.save(function(err, act){
+			if(err){
+				console.log(err);
+				reply("Failed!");
+			}else{
+				reply("Success");
+			}
+		});
 		
 		// reply()
 	},
