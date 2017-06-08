@@ -90,6 +90,15 @@ module.exports = [
 			    path: path.join(__dirname, '../public/styles')
 			}
 	    }
+	},
+	{
+	    method: 'GET',
+	    path: '/usr/{param*}',
+	    handler: {
+	        directory: {
+			    path: path.join(__dirname, '../public/img')
+			}
+	    }
 	}
 ];
 	

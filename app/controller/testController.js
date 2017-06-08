@@ -8,7 +8,7 @@ var Joi = require('joi'),
     cheerio = require('cheerio'),
     fs = require('fs');
 // Save to server and change src of img
-function src(html){
+function src(request, html){
 	var img = [];
 	var type = [];
 	var data = [];
@@ -31,7 +31,13 @@ function src(html){
 		img[ctr] = data[ctr];
 		
 		//TEMP. Should be stored in a folder for that account.
-		var location = './public/styles/img/' + generateID({prefix:"id-"}) + '.'+ dataType;
+		var accID = request.yar.get("auth");
+		var tempLoc = './public/img/' + accID;
+		if(!fs.existsSync(tempLoc)){
+			var as = fs.mkdir(tempLoc);
+		}
+
+		var location = tempLoc+'/' + generateID({prefix:"id-"+accID}) + '.'+ dataType;
 		var content = fs.writeFile(location, img[ctr] ,'base64');
 		$(this).attr("src",location);
 		// console.log(img[ctr]);
@@ -109,7 +115,7 @@ module.exports =  {
 		reply.view('uploadMain');
 	},
 	auth:(request, reply) =>{
-		request.yar.set('isAuth',true);
+		request.yar.set('auth',"029839023480239480");
 		reply("Success!");
 	},
 	checkauth:(request, reply)=>{
@@ -126,9 +132,9 @@ module.exports =  {
 		var title = data["title"];
 		var area = data["area"];
 		var tags = data["tags[]"];
-		var ans = src(data["ans"]);
-		var ins = src(data["ins"]);
-		var ques = src(data["ques"]);
+		var ans = src(request , data["ans"]);
+		var ins = src(request ,data["ins"]);
+		var ques = src(request ,data["ques"]);
 		try{
 			var acts = new act({
 				title: title,
